@@ -26,10 +26,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(InputValue input)
     {
-        
+        Debug.Log("OnMove");
         Vector2 velocity = input.Get<Vector2>() * speed;
         //_rigidbody2D.AddForce(velocity, ForceMode2D.Impulse);
-        Debug.Log("Input - " + velocity);
         _rigidbody2D.velocity = velocity;
     }
 
@@ -43,6 +42,8 @@ public class PlayerController : MonoBehaviour
     private void OnTeleport(InputValue input)
     {
         Debug.Log("OnTeleport");
+        Vector2 position = Camera.main.ScreenToWorldPoint(input.Get<Vector2>());
+        transform.position = position;
     }
 
 }
